@@ -11,6 +11,11 @@
   -->
   <title>Demo Album 3D Images</title>
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+  <!-- PixiJS must be imported before @pixi/sound -->
+<script src="https://unpkg.com/pixi.js/dist/browser/pixi.min.js"></script>
+
+<!-- found here, if not using CDN "./node_modules/@pixi/sound/dist/pixi-sound.js" -->
+<script src="https://unpkg.com/@pixi/sound/dist/pixi-sound.js"></script>
 
   <script type="text/javascript" charset="utf-8">
     function hasClassName(inElement, inClassName)
@@ -59,37 +64,55 @@
       else
         stage.style.webkitTransform = '';
     }
+
+    setInterval(function() {toggleShape();}, 5000);
+
+    PIXI.sound.Sound.from({
+            url: 'MangChung.mp3',
+            loop:true,
+            preload: true,
+            loaded: function(err, sound) {
+                    sound.play();
+
+            document.querySelector("#paused").addEventListener('click', function() {
+            const paused = PIXI.sound.togglePauseAll();
+
+            this.className = this.className.replace(/\b(on|off)/g, '');
+            this.className += paused ? 'on' : 'off';
+
+            });
+            }
+            });
   </script>
 </head>
 <body>
-  
-  <div id="container">
-    <div id="stage">
-      <div id="shape" class="cube backfaces">
-        <div class="plane one"></div>
-        <div class="plane two"></div>
-        <div class="plane three"></div>
-        <div class="plane four"></div>
-        <div class="plane five"></div>
-        <div class="plane six"></div>
-        <div class="plane seven"></div>
-        <div class="plane eight"></div>
-        <div class="plane nine"></div>
-        <div class="plane ten"></div>
-        <div class="plane eleven"></div>
-        <div class="plane twelve"></div>
+  <div id="bg">
+    <div id="container">
+      <div id="stage">
+        <div id="shape" class="cube backfaces">
+          <div class="plane one"></div>
+          <div class="plane two"></div>
+          <div class="plane three"></div>
+          <div class="plane four"></div>
+          <div class="plane five"></div>
+          <div class="plane six"></div>
+          <div class="plane seven"></div>
+          <div class="plane eight"></div>
+          <div class="plane nine"></div>
+          <div class="plane ten"></div>
+          <div class="plane eleven"></div>
+          <div class="plane twelve"></div>
+        </div>
       </div>
     </div>
   </div>
-
-
-  <div class="footer">
-    <div style="padding-bottom: 15px; padding-left: 16%;"><a href="#" class="classname" onclick="toggleShape()">Change style</a></div>
-  <div>
-	<audio controls autoplay>
-		<source src="MangChung.mp3" type="audio/mpeg">
-		<source src="MangChung.ogg" type="audio/ogg">
-	</audio>
+  
+  <!-- <div class="footer">
+  <div> -->
+    <button class="btn btn-lg btn-primary off" id="paused">
+      <span class="glyphicon glyphicon-pause off"></span>
+      <span class="glyphicon glyphicon-play on"></span>
+</button>
   </div>
   </div>
 

@@ -15,6 +15,7 @@ user-select: none;
     }
 
     #container {
+      position: absolute;
       width: 100%;
       -webkit-perspective: 1000;
       -webkit-perspective-origin: 50% 620px;
@@ -334,4 +335,30 @@ user-select: none;
 .footer{
   padding-top: 80%;
   padding-left: 40%;
+}
+
+.btn 
+ {
+    outline: none !important;
+ }
+
+.btn .off,
+.btn .on {
+    display: none;
+}
+
+.btn.off {
+  display: inline-block;
+}
+.btn.on .on {
+    display: inline-block;
+}
+
+#bg{
+height: 100vh;
+z-index: 0;
+background-image: url(../img/puung3.jpg);
+background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;  
 }
