@@ -28,7 +28,7 @@ user-select: none;
     
     #shape {
       position: relative;
-      top: 200px;
+      top: 600px;
       margin: 0 auto;
       height: 200px;
       width: 200px;
@@ -332,6 +332,6 @@ user-select: none;
 }
 
 .footer{
-  padding-top: 30%;
+  padding-top: 80%;
   padding-left: 40%;
 }
