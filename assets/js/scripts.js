@@ -14,8 +14,10 @@ jQuery(document).ready(function() {
     /*
 	    Countdown initializer
 	*/
+	
 	var now = new Date();
-	var countTo = 326 * 24 * 60 * 60 * 1000 + now.valueOf();    
+	var toTime = new Date(2022, 6, 8);
+	var countTo = toTime.valueOf();
 	$('.timer').countdown(countTo, function(event) {
 		$(this).find('.days').text(event.offset.totalDays);
 		$(this).find('.hours').text(event.offset.hours);
